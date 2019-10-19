@@ -1,7 +1,17 @@
 import React from "react";
+import {
+  AppBar,
+  Typography,
+  Toolbar,
+  Tabs,
+  Tab,
+  Paper
+} from "@material-ui/core";
 
 export default props => (
-  <div>
-    <h1>This is Header</h1>
-  </div>
+  <AppBar position="static">
+    <Toolbar>
+      <Typography variant="h4">Exercise database</Typography>
+    </Toolbar>
+  </AppBar>
 );
