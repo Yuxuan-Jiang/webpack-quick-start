@@ -1,7 +1,14 @@
-import React from "react";
-import { Grid, Paper } from "@material-ui/core";
+import React, { Fragment } from "react";
+import {
+  Grid,
+  Paper,
+  Typography,
+  List,
+  ListItem,
+  ListItemText
+} from "@material-ui/core";
 
-export default props => (
+export default ({ exercises }) => (
   <Grid container>
     <Grid item sm>
       <Paper
@@ -12,7 +19,25 @@ export default props => (
           marginBottom: 10
         }}
       >
-        left
+        {exercises.map(([muscles, exercises]) => (
+          <Fragment>
+            <Typography
+              variant="subtitle1"
+              style={{ textTransform: "capitalize" }}
+            >
+              {muscles}
+            </Typography>
+            <List component="nav" aria-label="secondary mailbox folder">
+              {exercises.map(exercise => {
+                return (
+                  <ListItem button>
+                    <ListItemText primary={exercise.id} />
+                  </ListItem>
+                );
+              })}
+            </List>
+          </Fragment>
+        ))}
       </Paper>
     </Grid>
     <Grid item sm>

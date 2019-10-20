@@ -1,9 +1,15 @@
 import React from "react";
 import { Tab, Tabs, Paper } from "@material-ui/core";
 
-export default ({ muscles }) => (
+export default ({ muscles, Chosen, onChange }) => (
   <Paper>
-    <Tabs value={2} indicatorColor="primary" textColor="primary" centered>
+    <Tabs
+      value={Chosen}
+      indicatorColor="primary"
+      textColor="primary"
+      centered
+      onChange={onChange}
+    >
       <Tab label={"All"} />
       {muscles.map(group => (
         <Tab label={group} />
