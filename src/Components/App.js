@@ -5,15 +5,14 @@ import { exercises, muscles } from "../store";
 
 export default class extends Component {
   state = {
-    exercises,
-    chosen: 0
+    exercises
   };
 
-  selectMuscle(chosen) {
+  HandleCategorySelection = Category => {
     this.setState({
-      chosen: 2
+      Category: Category
     });
-  }
+  };
 
   getExercisesByMuscle() {
     return Object.entries(
@@ -28,14 +27,15 @@ export default class extends Component {
   }
 
   render() {
+    const { Category } = this.state;
     return (
       <Fragment>
         <Header />
-        <Page exercises={this.getExercisesByMuscle()} />
+        <Page exercises={this.getExercisesByMuscle()} Category={Category} />
         <Footer
           muscles={muscles}
-          Chosen={this.state.chosen}
-          onChange={this.selectMuscle.bind(this)}
+          Category={Category}
+          onSelect={this.HandleCategorySelection}
         />
       </Fragment>
     );
