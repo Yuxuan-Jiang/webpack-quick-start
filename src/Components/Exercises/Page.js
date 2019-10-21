@@ -20,7 +20,7 @@ export default ({ exercises }) => (
         }}
       >
         {exercises.map(([muscles, exercises]) => (
-          <Fragment>
+          <Fragment key={muscles + "-0"}>
             <Typography
               variant="subtitle1"
               style={{ textTransform: "capitalize" }}
@@ -30,7 +30,7 @@ export default ({ exercises }) => (
             <List component="nav" aria-label="secondary mailbox folder">
               {exercises.map(exercise => {
                 return (
-                  <ListItem button>
+                  <ListItem button key={exercise.id}>
                     <ListItemText primary={exercise.id} />
                   </ListItem>
                 );

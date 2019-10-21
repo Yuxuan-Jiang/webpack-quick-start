@@ -1,5 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 module.exports = {
+  entry: "./src/index.js",
+  output: {
+    path: `${__dirname}/dist`,
+    filename: "main.js"
+  },
+  devtool: "source-map",
   module: {
     rules: [
       {

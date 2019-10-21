@@ -12,7 +12,7 @@ export default ({ muscles, Chosen, onChange }) => (
     >
       <Tab label={"All"} />
       {muscles.map(group => (
-        <Tab label={group} />
+        <Tab label={group} key={group} />
       ))}
     </Tabs>
   </Paper>
