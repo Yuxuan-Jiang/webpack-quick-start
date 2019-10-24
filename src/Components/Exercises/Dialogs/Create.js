@@ -7,38 +7,54 @@ import {
   DialogContent,
   DialogActions,
   DialogContentText,
+  TextField,
   Fab
 } from "@material-ui/core";
 
 export default class extends Component {
   state = {
-    open: false
+    open: false,
+    values: {
+      id: ""
+    }
   };
   handleClickOpen = () => {
-    this.setState(prevState => {
-      this.state.open = !prevState.open;
-    });
+    this.setState(prevState => ({ open: !prevState.open }));
+  };
+  handleClickCreate = () => {
+    this.setState(prevState => ({ open: !prevState.open }));
+  };
+  handleChange = name => event => {
+    event.persist();
+    this.setState(prevState => ({
+      values: { ...prevState.values, [name]: event.target.value }
+    }));
   };
   render() {
     const { open } = this.state;
     return (
       <Fragment>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={this.handleClickOpen}
-        >
-          <Fab color="primary" aria-label="add">
-            <AddIcon />
-          </Fab>
-        </Button>
+        <Fab aria-label="add" onClick={this.handleClickOpen} size="small">
+          <AddIcon />
+        </Fab>
         <Dialog open={open} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">Create new exercise</DialogTitle>
           <DialogContent>
             <DialogContentText>Please fill the form below</DialogContentText>
+            <form>
+              <TextField
+                id="standard-name"
+                label="id"
+                value={this.state.values.id}
+                onChange={this.handleChange("id")}
+                margin="normal"
+              />
+            </form>
           </DialogContent>
           <DialogActions>
-            <Button color="primary">Create</Button>
+            <Button color="primary" onClick={this.handleClickCreate}>
+              Create
+            </Button>
           </DialogActions>
         </Dialog>
       </Fragment>

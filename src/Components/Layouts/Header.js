@@ -5,7 +5,9 @@ import Create from "../Exercises/Dialogs/Create";
 export default props => (
   <AppBar position="static">
     <Toolbar>
-      <Typography variant="h4">Exercise database</Typography>
+      <Typography variant="h4" style={{ flex: 1 }}>
+        Exercise database
+      </Typography>
       <Create />
     </Toolbar>
   </AppBar>
