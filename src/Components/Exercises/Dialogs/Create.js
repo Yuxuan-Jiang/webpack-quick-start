@@ -24,10 +24,9 @@ export default class extends Component {
   handleClickCreate = () => {
     this.setState(prevState => ({ open: !prevState.open }));
   };
-  handleChange = name => event => {
-    event.persist();
+  handleChange = name => ({ target: { value } }) => {
     this.setState(prevState => ({
-      values: { ...prevState.values, [name]: event.target.value }
+      values: { ...prevState.values, [name]: value }
     }));
   };
   render() {
