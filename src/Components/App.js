@@ -2,11 +2,14 @@ import React, { Component, Fragment } from "react";
 import { Header, Footer } from "./Layouts";
 import { Page } from "./Exercises";
 import { exercises, muscles } from "../store";
+import { menu } from "../menu";
 
 export default class extends Component {
   state = {
     exercises,
-    Exercise: {}
+    Exercise: {},
+    menu,
+    Cuisines: {}
   };
 
   HandleCategorySelection = Category => {
@@ -15,10 +18,20 @@ export default class extends Component {
     });
   };
 
+  HandleCuisineSelection = Cuisine => {
+    this.setState({
+      Cuisine: Cuisine
+    });
+  };
+
   HandleExerciseSelection = id => {
     this.setState(prevState => ({
       Exercise: prevState.exercises.find(ex => ex.id === id)
     }));
+  };
+
+  HandleRestaurantSelection = restaurant => {
+    this.setState(prevState => ({}));
   };
 
   getExercisesByMuscle() {
@@ -34,20 +47,20 @@ export default class extends Component {
   }
 
   render() {
-    const { Category, Exercise } = this.state;
+    const { Cuisine, Restaurant, Menu } = this.state;
     return (
       <Fragment>
         <Header />
         <Page
-          exercises={this.getExercisesByMuscle()}
-          Category={Category}
+          Menu={Menu}
+          Cuisine={Cuisine}
           onSelect={this.HandleExerciseSelection}
-          Exercise={Exercise}
+          Restaurant={Restaurant}
         />
         <Footer
-          muscles={muscles}
-          Category={Category}
-          onSelect={this.HandleCategorySelection}
+          CusineList={Menu.key()}
+          Cuisine={Cuisine}
+          onSelect={this.HandleCuisineSelection}
         />
       </Fragment>
     );
