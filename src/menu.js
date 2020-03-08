@@ -1,4 +1,4 @@
-export const menu = {
+export const Menu = {
   italia: {
     0: {
       domainName: "http://emporio-italiano.com",

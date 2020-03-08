@@ -1,12 +1,12 @@
 import React from "react";
 import { Tab, Tabs, Paper } from "@material-ui/core";
 
-export default ({ muscles, Category, onSelect }) => {
-  const index = Category
-    ? muscles.findIndex(muscle => muscle === Category) + 1
+export default ({ CuisineList, Cuisine, onSelect }) => {
+  const index = Cuisine
+    ? CuisineList.findIndex(CuisineSelected => CuisineSelected === Cuisine) + 1
     : 0;
-  const onSelectIndex = (e, Category) => {
-    return onSelect(Category ? muscles[Category - 1] : "");
+  const onSelectIndex = (e, CuisineSelected) => {
+    return onSelect(CuisineSelected ? CuisineList[CuisineSelected - 1] : "");
   };
   return (
     <Paper>
@@ -18,8 +18,8 @@ export default ({ muscles, Category, onSelect }) => {
         onChange={onSelectIndex}
       >
         <Tab label={"All"} />
-        {muscles.map(group => (
-          <Tab label={group} key={group} />
+        {CuisineList.map(Cuisine => (
+          <Tab label={Cuisine} key={Cuisine} />
         ))}
       </Tabs>
     </Paper>

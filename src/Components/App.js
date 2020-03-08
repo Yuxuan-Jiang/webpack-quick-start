@@ -1,21 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { Header, Footer } from "./Layouts";
 import { Page } from "./Exercises";
-import { exercises, muscles } from "../store";
-import { menu } from "../menu";
+import { Menu } from "../menu";
 
 export default class extends Component {
   state = {
-    exercises,
-    Exercise: {},
-    menu,
-    Cuisines: {}
-  };
-
-  HandleCategorySelection = Category => {
-    this.setState({
-      Category: Category
-    });
+    Menu,
+    Cuisine: null,
+    Cuisines: {},
+    Restaurant: null
   };
 
   HandleCuisineSelection = Cuisine => {
@@ -31,8 +24,12 @@ export default class extends Component {
   };
 
   HandleRestaurantSelection = restaurant => {
-    this.setState(prevState => ({}));
+    this.setState(prevState => ({ Restaurant: restaurant }));
   };
+
+  getRestaurantByCuisine() {
+    return Object.entries(this.state.Menu.reduce());
+  }
 
   getExercisesByMuscle() {
     return Object.entries(
@@ -54,11 +51,11 @@ export default class extends Component {
         <Page
           Menu={Menu}
           Cuisine={Cuisine}
-          onSelect={this.HandleExerciseSelection}
+          onSelect={this.HandleRestaurantSelection}
           Restaurant={Restaurant}
         />
         <Footer
-          CusineList={Menu.key()}
+          CuisineList={Object.keys(Menu)}
           Cuisine={Cuisine}
           onSelect={this.HandleCuisineSelection}
         />

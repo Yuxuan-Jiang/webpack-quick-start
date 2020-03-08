@@ -6,7 +6,7 @@ export default props => (
   <AppBar position="static">
     <Toolbar>
       <Typography variant="h4" style={{ flex: 1 }}>
-        Exercise database
+        Menu UI Alpha Build
       </Typography>
       <Create />
     </Toolbar>

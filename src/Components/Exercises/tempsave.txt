@@ -1,0 +1,24 @@
+
+        {exercises.map(([muscles, exercises]) =>
+          !Category || Category === muscles ? (
+            <Fragment key={muscles}>
+              <Typography variant="h6" style={{ textTransform: "capitalize" }}>
+                {muscles}
+              </Typography>
+              <List component="nav" aria-label="exercise-list">
+                {exercises.map(({ id, title }) => {
+                  return (
+                    <ListItem button key={id} onClick={() => onSelect(id)}>
+                      <ListItemText primary={title} />
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </Fragment>
+          ) : null
+        )}
+
+
+
+export default ({ Menu, Cuisine, onSelect }) => (
+);
