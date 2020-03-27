@@ -5,8 +5,10 @@ import {
   Typography,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  Link
 } from "@material-ui/core";
+import DataBar from "./DataBar"
 
 const styles = {
   Paper: {
@@ -27,7 +29,7 @@ export default class extends Component {
 
     return (
       <Grid container>
-        <Grid item sm>
+        <Grid item xs={4}>
           <Paper
             style={{
               ...styles.Paper,
@@ -59,7 +61,7 @@ export default class extends Component {
             ))}
           </Paper>
         </Grid>
-        <Grid item sm>
+        <Grid item xs={8}>
           <Paper
             style={{
               ...styles.Paper,
@@ -67,7 +69,11 @@ export default class extends Component {
             }}
           >
             {Restaurant && (
-              <a href={Restaurant.domainName}>{Restaurant.name}</a>
+              <Typography variant="h2">
+                <Link href={Restaurant.domainName} >
+                  {Restaurant.name}
+                </Link>
+              </Typography>
             )}
             <br></br>
             <br></br>
@@ -75,7 +81,7 @@ export default class extends Component {
               Restaurant.menuUrls.map(url => {
                 return (
                   <Fragment>
-                    <a href={url}>{url}</a>
+                    <DataBar url={url} name={url}></DataBar>
                     <br></br>
                   </Fragment>
                 );
