@@ -81,7 +81,7 @@ export default class extends Component {
               Restaurant.menuUrls.map(url => {
                 return (
                   <Fragment>
-                    <DataBar url={url} name={url}></DataBar>
+                    <DataBar url={url.replace("'", "")} name={url}></DataBar>
                     <br></br>
                   </Fragment>
                 );
